@@ -1,13 +1,11 @@
 package com.bootcampjava.oop.controller;
 
-import com.bootcampjava.oop.model.Dosen;
-import com.bootcampjava.oop.model.Kelas;
-import com.bootcampjava.oop.model.Mahasiswa;
-import com.bootcampjava.oop.model.MataKuliah;
+import com.bootcampjava.oop.model.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -18,7 +16,8 @@ public class KelasController {
     public ResponseEntity<Object> get(){
         List<Kelas> result = new ArrayList<>();
 
-       Dosen dosen = new Dosen(1211, "Agus", "Pria", "S.kom", "D-1211");
+       Dosen dosen = new Dosen(1211, "Agus", "Yogyakarta", LocalDate.of(1965, 12, 14),"Pria",
+               new Alamat(101, "Jalan Kamandungan", "Baluwarti", "Pasar Kliwon", "Kota Surakarta", "Jawa Tengah"),"S.kom", "D-1211");
 
         List<Mahasiswa> mahasiswaList = Arrays.asList(
                 new Mahasiswa(111, "Budi", "Pria", "TI-111", "TI", 2022),
@@ -34,8 +33,21 @@ public class KelasController {
         result.add(kelas1);
 
         //kelas 2
-        MataKuliah mataKuliah2 = new MataKuliah("MK-001", "Pemrograman Java", 3);
-        Kelas kelas2 = new Kelas("K-001", mataKuliah2, dosen, "Rabu", "13.00 - 15.00", mahasiswaList);
+        List<Mahasiswa> mahasiswaList2 = Arrays.asList(
+                new Mahasiswa(117,"Toni", "Bandung", LocalDate.of(2000, 2, 4), "Pria", "TI-117", "TI", 2021),
+                new Mahasiswa(118,"Rina", "Yogyakarta", LocalDate.of(2001, 6, 15), "Wanita",
+                        new Alamat(110,"Jalan Laksda Adisucipto", "Caturtunggal", "Depok", "Sleman", "DIY"),"TI-118", "TI",2021),
+                new Mahasiswa(119,"Yogi", "Semarang", LocalDate.of(2000, 11, 23), "Pria",
+                        new Alamat(111, "Jalan Pemuda", "Sekayu", "Semarang Tengah", "Semarang", "Jawa Tengah"),"TI-119","TI",2021),
+                new Mahasiswa(120,"Boby", "Jakarta", LocalDate.of(2000, 9, 11), "Pria",
+                        new Alamat(112, "Jalan Metro Pondok Indah", "Pondok Pinang", "Kebayoran Lama", "Jakarta Selatan", "DKI Jakarta"),"TI-120", "TI",2021)
+
+        );
+
+        Dosen dosen2 = new Dosen(1212, "Hadi", "Solo", LocalDate.of(1960, 7, 24),"Pria", "S.kom", "D-1212");
+
+        MataKuliah mataKuliah2 = new MataKuliah("MK-002", "Pemrograman Database", 3);
+        Kelas kelas2 = new Kelas("K-002", mataKuliah2, dosen2, "Rabu", "13.00 - 15.00", mahasiswaList2);
         result.add(kelas2);
 
         return ResponseEntity.ok()
