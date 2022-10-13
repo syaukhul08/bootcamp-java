@@ -16,7 +16,7 @@ public class KelasController {
     public ResponseEntity<Object> get(){
         List<Kelas> result = new ArrayList<>();
 
-       Dosen dosen = new Dosen(1211, "Agus", "Yogyakarta", LocalDate.of(1965, 12, 14),"Pria",
+       Dosen dosen = new Dosen(1211, "Agus", "Solo", LocalDate.of(1965, 12, 14),"Pria",
                new Alamat(101, "Jalan Kamandungan", "Baluwarti", "Pasar Kliwon", "Kota Surakarta", "Jawa Tengah"),"S.kom", "D-1211");
 
         List<Mahasiswa> mahasiswaList = Arrays.asList(
@@ -44,7 +44,8 @@ public class KelasController {
 
         );
 
-        Dosen dosen2 = new Dosen(1212, "Hadi", "Solo", LocalDate.of(1960, 7, 24),"Pria", "S.kom", "D-1212");
+        Dosen dosen2 = new Dosen(1212, "Hadi", "Yogyakarta", LocalDate.of(1960, 7, 24),"Pria",
+                new Alamat(102, "Jalan Raya Janti", "Banguntapan", "Banguntapan", "Bantul"," DIY"),"S.kom", "D-1212");
 
         MataKuliah mataKuliah2 = new MataKuliah("MK-002", "Pemrograman Database", 3);
         Kelas kelas2 = new Kelas("K-002", mataKuliah2, dosen2, "Rabu", "13.00 - 15.00", mahasiswaList2);
