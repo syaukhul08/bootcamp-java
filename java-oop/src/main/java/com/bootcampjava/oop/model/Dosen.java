@@ -3,6 +3,7 @@ package com.bootcampjava.oop.model;
 import java.time.LocalDate;
 
 public class Dosen extends Orang {
+    private Integer id;
     private String title;
     private String nip;
 
@@ -25,6 +26,14 @@ public class Dosen extends Orang {
         super(nik, nama, tptLahir, tglLahir, jk, alamat);
         this.title = title;
         this.nip = nip;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getTitle() {

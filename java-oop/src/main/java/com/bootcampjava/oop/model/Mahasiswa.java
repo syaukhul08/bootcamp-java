@@ -3,6 +3,7 @@ package com.bootcampjava.oop.model;
 import java.time.LocalDate;
 
 public class Mahasiswa extends Orang {
+    private Integer id;
     private String nim;
     private String jurusan;
     private Integer ta;
@@ -36,6 +37,14 @@ public class Mahasiswa extends Orang {
         this.nim = nim;
         this.jurusan = jurusan;
         this.ta = ta;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getNim() {

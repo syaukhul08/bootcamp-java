@@ -1,32 +1,29 @@
 package com.bootcampjava.oop.controller;
 
-import com.bootcampjava.oop.model.*;
-import com.bootcampjava.oop.service.KelasService;
+import com.bootcampjava.oop.model.Dosen;
+import com.bootcampjava.oop.service.DosenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
 import java.util.List;
 
 @RestController
-public class KelasController {
+public class DosenController {
 
-    //properti
-    private KelasService kelasService;
+    private DosenService dosenService;
 
     @Autowired
-    public KelasController(KelasService kelasService){
-        this.kelasService = kelasService;
+    public DosenController(DosenService dosenService) {
+        this.dosenService = dosenService;
     }
 
-    @GetMapping("/kelas")
-    public ResponseEntity<Object> get(){
-        List<Kelas> result = kelasService.get();
+    @GetMapping("/dosen")
+    public ResponseEntity<Object>get(){
+        List<Dosen> result = dosenService.get();
 
         return ResponseEntity.ok()
                 .body(result);
     }
-
 }

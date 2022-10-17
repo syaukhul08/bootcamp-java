@@ -1,9 +1,12 @@
 package com.bootcampjava.oop.model;
 
-public class MataKuliah {
+public class MataKuliah{
+    private Integer id;
     private String kode;
     private String nama;
     private Integer sks;
+
+    private Dosen dosen;
 
     public MataKuliah() {
     }
@@ -12,6 +15,14 @@ public class MataKuliah {
         this.kode = kode;
         this.nama = nama;
         this.sks = sks;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getKode() {

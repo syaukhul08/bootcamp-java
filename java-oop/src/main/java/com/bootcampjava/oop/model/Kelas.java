@@ -3,6 +3,7 @@ package com.bootcampjava.oop.model;
 import java.util.List;
 
 public class Kelas {
+    private Integer id;
     private String kode;
     private MataKuliah matakuliah;
     private Dosen dosen;
@@ -20,6 +21,14 @@ public class Kelas {
         this.hari = hari;
         this.jadwal = jadwal;
         this.mahasiswa = mahasiswa;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getKode() {
