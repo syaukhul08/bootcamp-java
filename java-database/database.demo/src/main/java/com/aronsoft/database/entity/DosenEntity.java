@@ -1,6 +1,6 @@
 package com.aronsoft.database.entity;
 
-import com.aronsoft.database.model.SiswaModel;
+import com.aronsoft.database.model.DosenModel;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,13 +10,16 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
-@Table(name = "siswa_tab")
-public class SiswaEntity {
+@Table(name = "dosen_tab")
+public class DosenEntity {
     @Id
     @Column(name = "id", length = 36)
     private String id;
 
-    @Column(name = "nama_siswa", length = 120)
+    @Column(name = "nip", length = 20, unique = true)
+    private String nip;
+
+    @Column(name = "nama_dosen", length = 120)
     private String name;
 
     @Column(name = "jk", length = 10)
@@ -25,7 +28,10 @@ public class SiswaEntity {
     @Column(name = "alamat", length = 200)
     private String alamat;
 
-    @Column(name = "created_at", columnDefinition = "TIMESTAMP")
+    @Column(name = "gelar", length = 32)
+    private String gelar;
+
+    @Column(name = "created_at")
     private LocalDateTime createdAt;
 
     @Column(name = "created_by", length = 20)
@@ -37,19 +43,21 @@ public class SiswaEntity {
     @Column(name = "updated_by", length = 20)
     private String updatedBy;
 
-    public SiswaEntity() {
-
-    }
-
-    public SiswaEntity(SiswaModel data){
+    public DosenEntity(DosenModel data) {
         this.id = UUID.randomUUID().toString();
+        this.nip = data.getNip();
         this.name = data.getName();
         this.jk = data.getJk();
         this.alamat = data.getAlamat();
+        this.gelar = data.getGelar();
         this.createdAt = LocalDateTime.now();
         this.createdBy = "SYSTEM";
         this.updatedAt = LocalDateTime.now();
         this.updatedBy = "SYSTEM";
+    }
+
+    public DosenEntity() {
+
     }
 
     public String getId() {
@@ -58,6 +66,14 @@ public class SiswaEntity {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getNip() {
+        return nip;
+    }
+
+    public void setNip(String nip) {
+        this.nip = nip;
     }
 
     public String getName() {
@@ -84,6 +100,14 @@ public class SiswaEntity {
         this.alamat = alamat;
     }
 
+    public String getGelar() {
+        return gelar;
+    }
+
+    public void setGelar(String gelar) {
+        this.gelar = gelar;
+    }
+
     public LocalDateTime getCreatedAt() {
         return createdAt;
     }
@@ -100,19 +124,19 @@ public class SiswaEntity {
         this.createdBy = createdBy;
     }
 
-    public LocalDateTime getUpdateAt() {
+    public LocalDateTime getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdateAt(LocalDateTime updateAt) {
-        this.updatedAt = updateAt;
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
-    public String getUpdateBy() {
+    public String getUpdatedBy() {
         return updatedBy;
     }
 
-    public void setUpdateBy(String updateBy) {
-        this.updatedBy = updateBy;
+    public void setUpdatedBy(String updatedBy) {
+        this.updatedBy = updatedBy;
     }
 }

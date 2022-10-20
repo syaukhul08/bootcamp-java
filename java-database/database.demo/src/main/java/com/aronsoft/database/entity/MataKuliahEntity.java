@@ -1,6 +1,6 @@
 package com.aronsoft.database.entity;
 
-import com.aronsoft.database.model.SiswaModel;
+import com.aronsoft.database.model.MataKuliahModel;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,22 +10,23 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
-@Table(name = "siswa_tab")
-public class SiswaEntity {
+@Table(name = "mata_kuliah_tab")
+public class MataKuliahEntity {
+
     @Id
     @Column(name = "id", length = 36)
     private String id;
 
-    @Column(name = "nama_siswa", length = 120)
+    @Column(name = "kode_matkul", length = 20, unique = true)
+    private String code;
+
+    @Column(name = "nama_matkul", length = 225)
     private String name;
 
-    @Column(name = "jk", length = 10)
-    private String jk;
+    @Column(name = "sks")
+    private Integer sks;
 
-    @Column(name = "alamat", length = 200)
-    private String alamat;
-
-    @Column(name = "created_at", columnDefinition = "TIMESTAMP")
+    @Column(name = "created_at")
     private LocalDateTime createdAt;
 
     @Column(name = "created_by", length = 20)
@@ -37,15 +38,14 @@ public class SiswaEntity {
     @Column(name = "updated_by", length = 20)
     private String updatedBy;
 
-    public SiswaEntity() {
-
+    public MataKuliahEntity() {
     }
 
-    public SiswaEntity(SiswaModel data){
+    public MataKuliahEntity(MataKuliahModel data) {
         this.id = UUID.randomUUID().toString();
+        this.code = data.getCode();
         this.name = data.getName();
-        this.jk = data.getJk();
-        this.alamat = data.getAlamat();
+        this.sks = data.getSks();
         this.createdAt = LocalDateTime.now();
         this.createdBy = "SYSTEM";
         this.updatedAt = LocalDateTime.now();
@@ -60,6 +60,14 @@ public class SiswaEntity {
         this.id = id;
     }
 
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
     public String getName() {
         return name;
     }
@@ -68,20 +76,12 @@ public class SiswaEntity {
         this.name = name;
     }
 
-    public String getJk() {
-        return jk;
+    public Integer getSks() {
+        return sks;
     }
 
-    public void setJk(String jk) {
-        this.jk = jk;
-    }
-
-    public String getAlamat() {
-        return alamat;
-    }
-
-    public void setAlamat(String alamat) {
-        this.alamat = alamat;
+    public void setSks(Integer sks) {
+        this.sks = sks;
     }
 
     public LocalDateTime getCreatedAt() {
@@ -100,19 +100,19 @@ public class SiswaEntity {
         this.createdBy = createdBy;
     }
 
-    public LocalDateTime getUpdateAt() {
+    public LocalDateTime getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdateAt(LocalDateTime updateAt) {
-        this.updatedAt = updateAt;
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
-    public String getUpdateBy() {
+    public String getUpdatedBy() {
         return updatedBy;
     }
 
-    public void setUpdateBy(String updateBy) {
-        this.updatedBy = updateBy;
+    public void setUpdatedBy(String updatedBy) {
+        this.updatedBy = updatedBy;
     }
 }
